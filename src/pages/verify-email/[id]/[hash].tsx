@@ -2,7 +2,8 @@ import ApplicationLogo from '@/components/ApplicationLogo';
 import AuthCard from '@/components/AuthCard';
 import GuestLayout from '@/components/Layouts/GuestLayout';
 import Link from 'next/link';
-import VerifyEmailForm from '@/components/VerifyEmailForm';
+import dynamic from 'next/dynamic';
+const VerifyEmailForm = dynamic(() => import('@/components/VerifyEmailForm'), { ssr: false })
 
 const VerifyEmail = () => {
     

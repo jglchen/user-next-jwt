@@ -5,7 +5,7 @@ import UpdatePasswordForm from './components/UpdatePasswordForm';
 import DeleteUserForm from './components/DeleteUserForm';
 
 const Profile = () => {
-    const mustVerifyEmail = false;
+    const mustVerifyEmail = true;
     const verifyEmail = '';
     
     return (
