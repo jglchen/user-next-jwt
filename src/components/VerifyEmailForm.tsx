@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext, FormEvent} from 'react';
 import { useRouter } from 'next/router';
 import secureLocalStorage  from  'react-secure-storage';
-import { encryptSessionData } from '@/lib/cryptosession';
+import { decryptSessionData, encryptSessionData } from '@/lib/cryptosession';
 import createAxios from '@/lib/axios';
 import { UserContext } from '@/lib/context';
 import Button from '@/components/Button';
@@ -27,7 +27,28 @@ const VerifyEmailForm = () => {
             axios
                 .get(currentUrl.substring(currentUrl.indexOf('/verify-email')))
                 .then(response => {
-                    router.push('/dashboard');
+                    axios
+                        .get('/user')
+                        .then(res => {
+                            console.log(res);
+                            if (res.data){
+                                const userData = {
+                                    user: res.data,
+                                    authorization: {
+                                        token: userContext.authToken,
+                                        type: 'bearer',
+                                    }
+                                }
+                                if (secureLocalStorage.getItem('user_data')){
+                                    secureLocalStorage.setItem('user_data', userData);
+                                }
+                                if (decryptSessionData('user_data', 'object')){
+                                    encryptSessionData('user_data', userData);
+                                }
+                                userContext.userlLogin(userData);
+                            }
+                            router.push('/dashboard');
+                        });
                 })
                 .catch(error => {
                    console.log(error.response.data);
