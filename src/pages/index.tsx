@@ -29,7 +29,7 @@ export default function Home() {
           <div className="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
             <div className="p-6">
               <div className="ml-12">
-                <div className="mt-2 text-gray-600 dark:text-gray-400 text-base">
+                <div className="mt-2 text-gray-600 dark:text-gray-200 text-base">
                   <p>
                   There are different types of API authentication systems available in the Laravel application, Like Laravel passport, Laravel sanctum and of course, you can also use JWT authentication. In this JSON Web Token Authentication for Laravel 10 tutorial, we will use JWT to create this API authentication in Laravel.
                   </p>
@@ -45,7 +45,7 @@ export default function Home() {
           </div>
  
           <div className="flex justify-center mt-4 sm:items-center sm:justify-between">
-            <div className="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0">
+            <div className="ml-4 text-center text-sm text-gray-500  dark:text-gray-400 sm:text-right sm:ml-0">
               Laravel API JWT Auth with Next.js Frontend
             </div>
           </div>
